@@ -428,7 +428,7 @@ var setNavbarClock = function() {
 				$(".watch-notification").addClass("modal-in");
 
 			}, 50);
-			/*setTimeout(function() {
+			setTimeout(function() {
 				$(".watch-notification").removeClass("modal-in");
 				$(".watch-notification").addClass("modal-to-long-look");
 
@@ -438,7 +438,7 @@ var setNavbarClock = function() {
 					duration: 600,
 					easing: [0.645, 0.045, 0.355, 1]
 				});
-			}, 1550);*/
+			}, 1550);
 		}
 
 		core.init();
