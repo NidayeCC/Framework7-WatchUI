@@ -31,18 +31,18 @@ WatchUI is initalized by injecting into this variable, which then sets up WatchC
 
 WatchCore accepts several parameters which enable or disable modules, like the WatchUI Home Screen:
 
-Variable | Default value | Purpose
-------------- | -------------
-initHomeScreen | true | Enables/disables the WatchUI Home Screen.
-loadAppsRemote | false | Enables or disables remote app loading for WatchUI.
-appListSource | "apps/apps.json" | Specifies the origin for the remotely loaded apps.
-homeView | $('div.view#home') | Sets the Home container element.
-screenContainer | $("#screen-container") | Sets the Screen container element.
-indexIdentifier | "index" | Gets the `data-page` attribute for the inital Framework7 page.
-hideNavbars | true | Hides or shows Navigation Bar on WatchUI Homescreen (beta).
-navbarClock | true | Enables/disables clock in the upper right corner.
-navbarClockElement | $('p.time') | Specifies the Element the clock should be applied on.
-appPages | true | Treat pages like apps (initally hidden on load) (beta)
+| Variable | Default value | Purpose |
+|--------------------|------------------------|--------------------------------------------------------------|
+| initHomeScreen |  true | Enables/disables the WatchUI Home Screen. |
+| loadAppsRemote | false | Enables or disables remote app loading for WatchUI. |
+| appListSource | "apps/apps.json" | Specifies the origin for the remotely loaded apps. |
+| homeView | $('div.view#home') | Sets the Home container element. |
+| screenContainer | $("#screen-container") | Sets the Screen container element. |
+| indexIdentifier | "index" | Gets the data-page attribute for the inital Framework7 page. |
+| hideNavbars | true | Hides or shows Navigation Bar on WatchUI Homescreen (beta). |
+| navbarClock | true | Enables/disables clock in the upper right corner. |
+| navbarClockElement | $('p.time') | Specifies the Element the clock should be applied on. |
+| appPages | true | Treat pages like apps (initally hidden on load) (beta) |
 
 ### Required libraries
 WatchUI requires some libraries to work correctly. These libraries include:
