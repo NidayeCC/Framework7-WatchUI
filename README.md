@@ -120,6 +120,71 @@ As you can see, the apps are rendered around the first app in a weird way. I can
 
 You might need some time to get familiar with how App Icons are ordered. Just play around with it until you're happy.
 
+### App API
+If you are using Remote Apps, you can easily create your own apps using JSON. This is what the apps.json file is for. The basic syntax is very easy:
+
+```
+{
+	"apps": [
+		[YOUR APPS HERE]
+	]
+}
+```
+Apps are added to the `apps` array, which is, if enabled, loaded into WatchUI and generates the Home Screen. If you want to create your own app, just set the following keys to your desire:
+
+```
+{
+	"title": "Your App Title",
+	"identifier": "yourapp",
+	"bundleID": "com.yourcompany.yourapp",
+	"executable": "index.html",
+	"preinstalled": true,		<-- currently not used
+	"icon": "AppIcon.png",		<-- currently not used
+	"color": "#ff0045"
+},
+```
+
+The following method returns an app's info as a JavaScript object, which can be used in notifications:
+
+```
+myApp.core.apps.getAppInfo(appID);
+```
+Just replace `appID` with the application ID you require information from.
+
+## Notifications
+Framework7 has a great modal system. But for WatchUI, it's not good enough.
+
+ ᴡᴀᴛᴄʜ Notification consist of two "scenes", 
+
+* the "Short Look" interface, which displays the app icon, the app title and a brief description of what happened, and
+* the "Long Look" interface, which is the notification itself and contains the message and action buttons.
+
+<img src="promo/notification_short.png" width="200">
+<img src="promo/notification_long.png" width="200">
+
+<sub><sup>__Left:__ Short Look interface, __Right:__ Long Look interface with custom "Like" button</sup></sub>
+
+Because of that more content, WatchUI needed a custom Notification method. Here is the example that is used in the screenshots above:
+
+```
+watchApp.core.notify({
+	title: "Did you know?",
+	subtitle: watchApp.core.apps.getAppInfo("tips").title,
+	message: "Harvard is officially free for those with less than $65,000 in annual family income.",
+	icon: "img/icons/AppIcon-Tips.png",
+	color: watchApp.core.apps.getAppInfo("tips").color,
+	buttons: [
+		{
+			title: "Like",
+		}
+	]
+});
+```
+
+You might have noticed that only one of the two buttons is specified in this example. This is because the  ᴡᴀᴛᴄʜ OS automatically adds the "Dismiss" button. The same happens in WatchUI. You'll only need to specify the buttons that contain actions.
+
+Buttons only have `title` and `onClick` attributes. The `onClick` attribute can contain a function that gets called when the button is pressed and the notification is gone (so there's not too much action at once).
+
 ## Debugging
 If you want to display the versions of Framework7, WatchCore or WatchUI anywhere, you can access these attributes from your Framework7 object:
 
