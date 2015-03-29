@@ -22,13 +22,13 @@ var setNavbarClock = function() {
 	window.WatchApp = function(params) {
 		var app = this;
 		
-		app.version = "2.1 (1503290113)"
+		app.version = "2.1 (1503290121)"
 	};
 	
 	window.WatchCore = function(params) {
 		var core = this;
 
-		core.version = "1.1 (1503290040)";
+		core.version = "1.1 (1503290083)";
 
 		core.params = {
 			appList: [],
@@ -43,8 +43,6 @@ var setNavbarClock = function() {
 			
 			navbarClock: true,
 			navbarClockElement: $('p.time'),
-			
-			appPages: true
 		};
 		
 		core.intervals = [];
@@ -77,13 +75,18 @@ var setNavbarClock = function() {
 				}
 			}
 			
-			if (!core.params.appPages) {
-				$('body').addClass("show-page-content");
-			}
-			
 			if (core.params.navbarClock) {
 				core.initNavbarClock();
 			}
+			
+			Dom7(document).on("pageInit", function() {
+				if (core.params.navbarClock) {
+					setNavbarClock();
+				}
+				$('a.link.watch-home').on("click", function() {
+					core.home(true);
+				});
+			});
 		};
 		
 		core.initNavbarClock = function() {
@@ -442,7 +445,7 @@ var setNavbarClock = function() {
 	window.WatchUI = function(params) {
 		var ui = this;
 		
-		ui.version = "1.2 (1503290038)";
+		ui.version = "1.2 (1503290052)";
 		
 		ui.screen = $("#screen-container");
 

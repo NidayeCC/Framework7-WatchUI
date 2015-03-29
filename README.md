@@ -193,3 +193,5 @@ myApp.version /* Framework7 Version */
 myApp.core.version /* WatchCore Version (1.1) */
 myApp.core.watchUI.version /* WatchUI.Version */
 ```
+
+<sub><sup>WatchUI Code is based on [Pipes Apple Watch Demo](http://demoapplewatch.com)</sup></sub>
