@@ -1,10 +1,5 @@
 body.watch {
   -webkit-touch-callout: none !important;
-  /*&.show-page-content {
-		&:not([data-page="index"]) div.page-content {
-			opacity: 1 !important;
-		}
-	}*/
 }
 body.watch.standalone:not(.ipad) {
   height: calc(100% + 20px);
@@ -68,9 +63,6 @@ body.watch div.pages div.page-content {
 body.watch div.page {
   padding-bottom: 0;
   background-color: #000;
-}
-body.watch div.page.app-inital div.page-content {
-  opacity: 0;
 }
 body.watch div.list-block:not(.notifications) {
   margin: 16px;
@@ -182,11 +174,13 @@ body.watch div.content-block div.content-block-inner:after {
 body.watch div.content-block div.row {
   margin: 0 25px;
 }
+body.watch div.view[data-page="index"] div.navbar {
+  display: none;
+}
 body.watch div.navbar {
   -webkit-transition-duration: 0ms !important;
   transition-duration: 0ms !important;
   background-color: #000 !important;
-  opacity: 0;
   height: 60px;
 }
 body.watch div.navbar div.navbar-inner {

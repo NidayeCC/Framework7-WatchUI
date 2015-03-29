@@ -22,13 +22,13 @@ var setNavbarClock = function() {
     window.WatchApp = function(params) {
         var app = this;
 
-        app.version = "2.1 (1503290121)"
+        app.version = "2.1 (1503300145)"
     };
 
     window.WatchCore = function(params) {
         var core = this;
 
-        core.version = "1.1 (1503290083)";
+        core.version = "1.1 (1503300155)";
 
         core.params = {
             appList: [],
@@ -327,11 +327,8 @@ var setNavbarClock = function() {
                                     url: cl,
                                     animatePages: false
                                 });
-
+								$('div.view.view-main').css("opacity",0);
                                 setTimeout(function() {
-                                    setTimeout(function() {
-                                        $('div.page:not([data-page="' + core.params.indexIdentifier + '"]) div.page-content, div.navbar').css("opacity", 1);
-                                    }, 100);
                                     $('div.view.view-main').velocity({
                                         scale: [[1], 0],
                                         opacity: 1
@@ -462,7 +459,7 @@ var setNavbarClock = function() {
     window.WatchUI = function(params) {
         var ui = this;
 
-        ui.version = "1.2 (1503290052)";
+        ui.version = "1.2 (1503300067)";
 
         ui.screen = $("#screen-container");
 
