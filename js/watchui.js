@@ -339,7 +339,12 @@ var setNavbarClock = function() {
 				return apps;
 			},
 			getAppInfo: function(appID) {
-				return core.params.appList[getIndexIfObjWithOwnAttr(core.params.appList, "identifier", appID)];
+				if (core.params.appList.length > 0) {
+					return core.params.appList[getIndexIfObjWithOwnAttr(core.params.appList, "identifier", appID)];
+				} else {
+					core.params.appList = core.apps.getAppList();
+					return core.params.appList[getIndexIfObjWithOwnAttr(core.params.appList, "identifier", appID)];
+				}
 			},
 			returnAppInfo: function(appInfoObject) {
 				return appInfoObject;
@@ -418,7 +423,7 @@ var setNavbarClock = function() {
 				$(".watch-notification").addClass("modal-in");
 
 			}, 50);
-			setTimeout(function() {
+			/*setTimeout(function() {
 				$(".watch-notification").removeClass("modal-in");
 				$(".watch-notification").addClass("modal-to-long-look");
 
@@ -428,7 +433,7 @@ var setNavbarClock = function() {
 					duration: 600,
 					easing: [0.645, 0.045, 0.355, 1]
 				});
-			}, 1550);
+			}, 1550);*/
 		}
 
 		core.init();
@@ -676,15 +681,14 @@ $.fn.extend({
 
 var scrolling = false;
 
-//var watchCore = new watchCore();
 
 /*setTimeout(function() {
-	watchCore.notify({
+	watchApp.core.notify({
 		title: "Did you know?",
-		subtitle: watchCore.apps.getAppInfo("tips").title,
+		subtitle: watchApp.core.apps.getAppInfo("tips").title,
 		message: "Harvard is officially free for those with less than $65,000 in annual family income.",
 		icon: "img/icons/AppIcon-Tips.png",
-		color: watchCore.apps.getAppInfo("tips").color,
+		color: watchApp.core.apps.getAppInfo("tips").color,
 		buttons: [
 			{
 				title: "Like",
