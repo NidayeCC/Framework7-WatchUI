@@ -334,7 +334,7 @@ var setNavbarClock = function() {
                                     }, 100);
                                     $('div.view.view-main').velocity({
                                         scale: [[1], 0],
-                                        opacity: 1
+                                        opacity: [[1], 0]
                                     }, {
                                         easing: [0.19, 1, 0.22, 1],
                                         duration: 600
