@@ -83,6 +83,8 @@ var setNavbarClock = function() {
 				if (core.params.navbarClock) {
 					setNavbarClock();
 				}
+				
+				$('a.link.watch-home').off("click");
 				$('a.link.watch-home').on("click", function() {
 					core.home(true);
 				});
