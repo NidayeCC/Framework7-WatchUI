@@ -70,7 +70,7 @@ body.watch div.page {
   background-color: #000;
 }
 body.watch div.page.app-inital div.page-content {
-  opacity: 0;
+  opacity: 1;
 }
 body.watch div.list-block:not(.notifications) {
   margin: 16px;
@@ -182,11 +182,14 @@ body.watch div.content-block div.content-block-inner:after {
 body.watch div.content-block div.row {
   margin: 0 25px;
 }
+body.watch div.view[data-page="index"] div.navbar {
+  display: none;
+}
 body.watch div.navbar {
   -webkit-transition-duration: 0ms !important;
   transition-duration: 0ms !important;
   background-color: #000 !important;
-  opacity: 0;
+/*   opacity: 0; */
   height: 60px;
 }
 body.watch div.navbar div.navbar-inner {

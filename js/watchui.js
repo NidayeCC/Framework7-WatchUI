@@ -327,11 +327,8 @@ var setNavbarClock = function() {
                                     url: cl,
                                     animatePages: false
                                 });
-
+								$('div.view.view-main').css("opacity",0);
                                 setTimeout(function() {
-                                    setTimeout(function() {
-                                        $('div.page:not([data-page="' + core.params.indexIdentifier + '"]) div.page-content, div.navbar').css("opacity", 1);
-                                    }, 100);
                                     $('div.view.view-main').velocity({
                                         scale: [[1], 0],
                                         opacity: 1
