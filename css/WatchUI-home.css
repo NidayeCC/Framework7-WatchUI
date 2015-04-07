@@ -49,14 +49,12 @@ body, html {
 
 #home {
 	border-radius: 10px;
-	height: 89%;
+	height: 100%;
 	opacity: 0;
 	overflow: hidden;
 	position: relative;
-	right: -8px;
-	top: 14px;
 	transform-origin: center 50% 0;
-	width: 94%;
+	width: 100%;
 	-webkit-transform-origin: center 50%;
 	-moz-transform-origin: center 50%;
 	-ms-transform-origin: center 50%;
@@ -72,9 +70,8 @@ body, html {
 }
 
 .appicon {
-	background-color: white;
-	width: 74px;
-	height: 74px;
+	width: 64px;
+	height: 64px;
 	border-radius: 50%;
 	transform-origin: center;
 	-webkit-transform-origin: center;
@@ -90,6 +87,27 @@ body, html {
 	padding-top: 16px;
 	box-sizing: border-box;
 	background-size: 100%;
+}
+.appicon img {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	border-radius: 100%;
+}
+.appicon p.label {
+	margin: 0;
+	margin-top: 55px;
+	margin-left: -18px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 11pt;
+	width: 100px;
+	text-align: center;
+}
+body:not(.app-labels) .appicon p.label {
+	display: none;
 }
 
 div.case {

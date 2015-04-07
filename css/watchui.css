@@ -63,6 +63,7 @@ body.watch div.pages div.page-content {
 body.watch div.page {
   padding-bottom: 0;
   background-color: #000;
+  min-height: 100%;
 }
 body.watch div.list-block:not(.notifications) {
   margin: 16px;
@@ -84,7 +85,7 @@ body.watch div.list-block:not(.notifications) ul li {
   -webkit-transition: -webkit-transform 100ms ease;
 }
 body.watch div.list-block:not(.notifications) ul li:not(:last-child) {
-  margin-bottom: 5px;
+  margin-bottom: 16px;
 }
 body.watch div.list-block:not(.notifications) ul li label.label-checkbox:active,
 body.watch div.list-block:not(.notifications) ul li label.label-radio:active,
@@ -99,6 +100,7 @@ body.watch div.list-block:not(.notifications) ul li label.label-radio input[type
 }
 body.watch div.list-block:not(.notifications) ul li div.item-inner {
   padding-left: 15px;
+  background-image: none !important;
 }
 body.watch div.list-block:not(.notifications) ul li div.item-inner:after {
   display: none;
@@ -143,10 +145,6 @@ body.watch div.list-block:not(.notifications) ul li a.item-link.item-content {
 body.watch div.list-block:not(.notifications) ul li a.item-link:active {
   background-color: #121212 !important;
   border-radius: 10px !important;
-}
-body.watch div.list-block:not(.notifications):not(.form) ul li:not(.item-content):active {
-  transform: scale(0.96710526);
-  -webkit-transform: scale(0.96710526);
 }
 body.watch div.content-block-title {
   margin: 35px 25px 10px;
@@ -222,6 +220,25 @@ body.watch div.navbar .icon.icon-back {
 }
 body.watch div.toolbar {
   display: none;
+}
+body.watch div.scrollbar {
+  position: absolute;
+  top: 20px;
+  right: 4px;
+  width: 12px;
+  height: 78px;
+  background-color: #4d4d4d;
+  z-index: 550;
+  border-radius: 6px;
+}
+body.watch div.scrollbar div.scrollbar-inner {
+  position: relative;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #2ed75f;
+  border-radius: 4px;
 }
 body.watch div.modal {
   width: calc(100% - 50px);
@@ -502,7 +519,7 @@ body.watch div.notifications.watch-notification.modal-out div.short-look {
     -webkit-transform: translate3d(0, 0, 0);
   }
   to {
-    opacity: .9;
+    opacity: 1;
     -webkit-transform: translate3d(-100%, 0, 0);
   }
 }
@@ -511,13 +528,13 @@ body.watch div.notifications.watch-notification.modal-out div.short-look {
     transform: translate3d(0, 0, 0);
   }
   to {
-    opacity: .9;
+    opacity: 1;
     transform: translate3d(-100%, 0, 0);
   }
 }
 @-webkit-keyframes pageFromLeftToCenter {
   from {
-    opacity: .9;
+    opacity: 1;
     -webkit-transform: translate3d(-100%, 0, 0);
   }
   to {
@@ -534,34 +551,86 @@ body.watch div.notifications.watch-notification.modal-out div.short-look {
     transform: translate3d(0, 0, 0);
   }
 }
+@-webkit-keyframes pageFromCenterToRight {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+  }
+}
+@keyframes pageFromCenterToRight {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+@-webkit-keyframes pageFromRightToCenter {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+  }
+  25% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes pageFromRightToCenter {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  25% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 body.watch .page-from-right-to-center {
-  -webkit-animation: pageFromRightToCenter 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-  animation: pageFromRightToCenter 600ms forwards;
+  -webkit-animation: pageFromRightToCenter 400ms forwards cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: pageFromRightToCenter 400ms forwards;
 }
 body.watch .page-from-right-to-center:before {
-  -webkit-animation: pageFromRightToCenterShadow 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-  animation: pageFromRightToCenterShadow 600ms forwards;
+  display: none;
 }
 body.watch .page-from-center-to-right {
-  -webkit-animation: pageFromCenterToRight 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-animation: pageFromCenterToRight 400ms forwards cubic-bezier(0.455, 0.03, 0.515, 0.955);
   animation: pageFromCenterToRight 600ms forwards;
 }
 body.watch .page-from-center-to-right:before {
-  -webkit-animation: pageFromCenterToRightShadow 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-  animation: pageFromCenterToRightShadow 600ms forwards;
+  display: none;
 }
 body.watch .page-from-center-to-left {
-  -webkit-animation: pageFromCenterToLeft 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-animation: pageFromCenterToLeft 400ms forwards cubic-bezier(0.455, 0.03, 0.515, 0.955);
   animation: pageFromCenterToLeft 600ms forwards;
+  z-index: 20;
 }
 body.watch .page-from-left-to-center {
-  -webkit-animation: pageFromLeftToCenter 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-  animation: pageFromLeftToCenter 600ms forwards;
+  -webkit-animation: pageFromLeftToCenter 400ms forwards cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: pageFromLeftToCenter 400ms forwards;
+  z-index: 20;
 }
 body.watch .navbar-from-center-to-left .sliding,
 body.watch .navbar-from-center-to-right .sliding,
 body.watch .navbar-from-left-to-center .sliding,
 body.watch .navbar-from-right-to-center .sliding {
-  transition-duration: 600ms !important;
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-duration: 400ms !important;
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }

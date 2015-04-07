@@ -71,6 +71,7 @@ body.watch {
 	div.page {
 		padding-bottom: 0;
 		background-color: #000;
+		min-height: 100%;
 	}
 	
 	div.list-block:not(.notifications) {
@@ -94,7 +95,7 @@ body.watch {
 				-webkit-transition: -webkit-transform 100ms ease;
 				
 				&:not(:last-child) {
-					margin-bottom: 5px;
+					margin-bottom: 16px;
 				}
 				
 				label.label-checkbox:active,
@@ -113,6 +114,8 @@ body.watch {
 				
 				div.item-inner {
 					padding-left: 15px;
+					background-image: none !important;
+					
 					&:after {
 						display: none;
 					}
@@ -169,8 +172,8 @@ body.watch {
 		
 		&:not(.form) ul li {
 			&:not(.item-content):active {
-				transform: scale(0.96710526);
-				-webkit-transform: scale(0.96710526);
+				//transform: scale(0.96710526);
+				//-webkit-transform: scale(0.96710526);
 			}
 		}
 	}
@@ -261,6 +264,26 @@ body.watch {
 	}
 	div.toolbar {
 		display: none;
+	}
+	div.scrollbar {
+		position: absolute;
+		top: 20px;
+		right: 4px;
+		width: 12px;
+		height: 78px;
+		background-color: #4d4d4d;
+		z-index: 550;
+		border-radius: 6px;
+		
+		div.scrollbar-inner {
+			position: relative;
+			top: 2px;
+			left: 2px;
+			width: 8px;
+			height: 8px;
+			background-color: #2ed75f;
+			border-radius: 4px;
+		}
 	}
 	
 	div.modal {
@@ -575,7 +598,7 @@ body.watch {
 	    }
 	
 	    to {
-	        opacity: .9;
+	        opacity: 1;
 	        -webkit-transform: translate3d(-100%, 0, 0)
 	    }
 	}
@@ -586,14 +609,14 @@ body.watch {
 	    }
 	
 	    to {
-	        opacity: .9;
+	        opacity: 1;
 	        transform: translate3d(-100%, 0, 0)
 	    }
 	}
 	
 	@-webkit-keyframes pageFromLeftToCenter {
 	    from {
-	        opacity: .9;
+	        opacity: 1;
 	        -webkit-transform: translate3d(-100%, 0, 0)
 	    }
 	
@@ -614,38 +637,96 @@ body.watch {
 	    }
 	}
 	
+	@-webkit-keyframes pageFromCenterToRight {
+	    from {
+	        opacity: 1;
+	        -webkit-transform: scale(1);
+	    }
+	    
+	    75% { opacity: 1; }
+	
+	    to {
+	        opacity: 0;
+	        -webkit-transform: scale(0.5);
+	    }
+	}
+	
+	@keyframes pageFromCenterToRight {
+	    from {
+		    opacity: 1;
+	        transform: scale(1);
+	    }
+	    
+	    75% { opacity: 1; }
+	
+	    to {
+	        opacity: 0;
+	        transform: scale(0.5);
+	    }
+	}
+	
+	@-webkit-keyframes pageFromRightToCenter {
+	    from {
+	        opacity: 0;
+	        -webkit-transform: scale(0.5);
+	    }
+	    
+	    25% { opacity: 1; }
+	
+	    to {
+	        opacity: 1;
+	        -webkit-transform: scale(1);
+	    }
+	}
+	
+	@keyframes pageFromRightToCenter {
+	    from {
+		    opacity: 0;
+	        transform: scale(0.5);
+	    }
+	    
+	    25% {
+		    opacity: 1;
+	    }
+	
+	    to {
+	        opacity: 1;
+	        transform: scale(1);
+	    }
+	}
+	
 	.page-from-right-to-center {
-	    -webkit-animation: pageFromRightToCenter 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-	    animation: pageFromRightToCenter 600ms forwards
+	    -webkit-animation: pageFromRightToCenter 400ms forwards cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	    animation: pageFromRightToCenter 400ms forwards
 	}
 	
 	.page-from-right-to-center:before {
-	    -webkit-animation: pageFromRightToCenterShadow 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-	    animation: pageFromRightToCenterShadow 600ms forwards
+	   display: none;
 	}
 	
 	.page-from-center-to-right {
-	    -webkit-animation: pageFromCenterToRight 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
+	    -webkit-animation: pageFromCenterToRight 400ms forwards cubic-bezier(0.455, 0.03, 0.515, 0.955);
 	    animation: pageFromCenterToRight 600ms forwards
 	}
 	
 	.page-from-center-to-right:before {
-	    -webkit-animation: pageFromCenterToRightShadow 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-	    animation: pageFromCenterToRightShadow 600ms forwards
+	    display: none;
 	}
 	
 	.page-from-center-to-left {
-	    -webkit-animation: pageFromCenterToLeft 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-	    animation: pageFromCenterToLeft 600ms forwards
+	    -webkit-animation: pageFromCenterToLeft 400ms forwards cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	    animation: pageFromCenterToLeft 600ms forwards;
+	    z-index: 20;
 	}
 	
 	.page-from-left-to-center {
-	    -webkit-animation: pageFromLeftToCenter 600ms forwards cubic-bezier(0.645, 0.045, 0.355, 1);
-	    animation: pageFromLeftToCenter 600ms forwards
+	    -webkit-animation: pageFromLeftToCenter 400ms forwards cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	    animation: pageFromLeftToCenter 400ms forwards;
+	    z-index: 20;
 	}
 	
 	.navbar-from-center-to-left .sliding, .navbar-from-center-to-right .sliding, .navbar-from-left-to-center .sliding, .navbar-from-right-to-center .sliding {
-		transition-duration: 600ms !important;
-		transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+		transition-duration: 400ms !important;
+		transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 	}
 }
