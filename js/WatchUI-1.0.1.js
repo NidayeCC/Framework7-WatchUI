@@ -10,6 +10,7 @@ Framework7.prototype.plugins.WatchUI = function(app, params) {
 			CoreHomeView: $('div.view#home'),
 			CoreIndexIdentifier: "index",
 			CoreInitHomeScreen: true,
+			CoreHomeMovement: true,
 			CoreLoadAppsRemote: false,
 			CoreNavbarClock: true,
 			CoreNavbarClockElement: 'p.time',
@@ -31,6 +32,7 @@ Framework7.prototype.plugins.WatchUI = function(app, params) {
 			homeView: watch.params.CoreHomeView,
 			indexIdentifier: watch.params.CoreIndexIdentifier,
 			initHomeScreen: watch.params.CoreInitHomeScreen,
+			homeMovement: watch.params.CoreHomeMovement,
 			loadAppsRemote: watch.params.CoreLoadAppsRemote,
 			navbarClock: watch.params.CoreNavbarClock,
 			navbarClockElement: watch.params.CoreNavbarClockElement,
@@ -131,7 +133,7 @@ Framework7.prototype.plugins.WatchUI = function(app, params) {
 				setTimeout(function() {
 					core.home();
 
-					core.params.screenContainer.on("touchstart mousedown", function(e) {
+					core.params.screenContainer.on((core.params.homeMovement?"touchstart mousedown":""), function(e) {
 						if (core.params.main.ui.params.scrollAvailable === false) {
 							return;
 						};
@@ -239,6 +241,7 @@ Framework7.prototype.plugins.WatchUI = function(app, params) {
 							}, 16)
 						})
 					});
+
 					$('.appicon').on("touchstart mousedown", function() {
 						var el = $(this);
 
