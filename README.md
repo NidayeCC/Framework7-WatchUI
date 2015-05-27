@@ -3,6 +3,10 @@ Apple Watch UI (including optional Home Screen) for Framework7
 
 <img src="promo/logo.png">
 
+
+### Recommended for you
+Also check out [MetroUI](https://github.com/SniperGER/MetroUI), an feature-filled, Windows (Phone) based application framework!
+
 ## Introduction
 Framework7 is the best HTML Application Framework for iOS 7-styled apps I can imagine. Fast, versatile, modular. But something was missing.
 
