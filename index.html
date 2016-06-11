@@ -1,188 +1,34 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>watchUI</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<title>WatchUI Demo</title>
-		<!-- Path to Framework7 Library CSS-->
-		<link rel="stylesheet" href="css/framework7.min.css">
-		<!-- Path to your custom app styles-->
-		<link rel="stylesheet" href="css/watchui.css">
-		<link rel="stylesheet" href="css/screen.css">
-		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-		
-		<style>
-			div.tutorial-overlay {
-				position: absolute;
-				top: 0; bottom: 0;
-				left: 0; right: 0;
-				background-color: rgba(0,0,0,0.9);
-				z-index: 9000;
-			}
-		</style>
-		
-		<script type="text/javascript" src="js/lib/jquery.js"></script>
-		<script type="text/javascript" src="js/lib/jquery.easing.1.3.js"></script>
-		<script type="text/javascript" src="js/lib/fastclick.js"></script>
-		<script type="text/javascript" src="js/lib/velocity.min.js"></script>
+		<link rel="stylesheet" href="css/framework7.ios.css">
+		<link rel="stylesheet" href="dist/css/watchUI-2.0.css">
+		<script src="js/framework7.js"></script>
+		<script src="dist/js/watchUI-2.0.js"></script>
 	</head>
-	<body class="watch">
-		<!-- Status bar overlay for fullscreen mode-->
-		<div class="statusbar-overlay"></div>
-		<!-- Panels overlay-->
-		<div class="panel-overlay"></div>
-		<!-- Left panel with reveal effect-->
-		<div class="panel panel-left panel-reveal">
-			<div class="content-block">
-				<p>Left panel content goes here</p>
-			</div>
-		</div>
-		<!-- Right panel with cover effect-->
-		<div class="panel panel-right panel-cover">
-			<div class="content-block">
-				<p>Right panel content goes here</p>
-			</div>
-		</div>
-		<!-- Views-->
+	<body class="watch theme-blue">
 		<div class="views">
-			<!-- Your main view, should have "view-main" class-->
-			<div class="view view-main">
-				<!-- Top Navbar-->
-				<div class="navbar">
-					<div class="navbar-inner">
-						<!-- We have home navbar without left link-->
-						<div class="left sliding">Awesome App</div>
-						<div class="right">
-							<p class="time">09:41</p>
+			<div class="view view-main active" data-page="index">
+				<div class="pages">
+					<div data-page="index" class="page">
+						<div class="page-content">
+							<div id="screen-container"></div>
 						</div>
 					</div>
 				</div>
-				<!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
-				<div class="pages navbar-through toolbar-through">
-					<!-- Page, data-page contains page name-->
-							<div data-page="index" data-watch-home class="page no-navbar">
-			<div class="page-content">
-				<div id="screen-container">
-					<div class="view" id="home" style="">
-						<div class="appicon" id="demo.html"></div>
-						<div class="appicon" id="demo.html"></div>
-						<div class="appicon" id="demo.html"></div>
-						<div class="appicon" id="demo.html"></div>
-						<div class="appicon" id="demo.html"></div>
-						<div class="appicon" id="demo.html"></div>
-						<div class="appicon" id="demo.html"></div>
-					</div>
+			</div>
+			<div class="view view-app">
+				<div class="navbar navbar-hiding"></div>
+				<div class="pages navbar-through"></div>
+				<div class="clock"><p class="time">10:09</p></div>
+				<div class="scroll-indicator">
+					<div class="scroll-indicator-inner"></div>
 				</div>
 			</div>
 		</div>
-
-				</div>
-				<!-- Bottom Toolbar-->
-				<div class="toolbar">
-					<div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
-				</div>
-			</div>
-		</div>
-		<!-- Path to Framework7 Library JS-->
-		<script type="text/javascript" src="js/framework7.min.js"></script>
-		<!-- Path to your app js-->
-		<script type="text/javascript" src="js/watchui.js"></script>
-		<script type="text/javascript" src="js/my-app.js"></script>
-		
-		<script>
-			var demo2complete=false;
-			
-			$("body").append("<div class=\"tutorial-overlay\" onclick=\"$(this).fadeOut(200);setTimeout(function() {$('div.tutorial-overlay').remove()}, 200);\" style=\"display: none;\"><img src=\"demo/demo-1.png\" style=\"position: absolute; top: 50%; left: 50%; margin-top: -185px; margin-left: -200px;\"></div>");
-			setTimeout(function() {
-				$('div.tutorial-overlay').fadeIn(200);
-			}, 1000);
-			
-			myApp.onPageInit("demo", function() {
-				if(!demo2complete) {
-					$("body").append("<div class=\"tutorial-overlay\" style=\"display: none;\"><img src=\"demo/demo-2.png\" style=\"position: absolute; top: 0%; left: 0%;\"></div>");
-					$('.tutorial-overlay').click(function() {
-						$(this).fadeOut(200);
-						setTimeout(function() {
-							$('div.tutorial-overlay').remove();
-							$("body").append("<div class=\"tutorial-overlay\" onclick=\"\" style=\"display: none;\"><img src=\"demo/demo-3.png\" style=\"position: absolute; top: 0%; right: 0%;\"></div>");
-							$('.tutorial-overlay').click(function() {
-								$(this).fadeOut(200);
-								setTimeout(function() {
-									$('div.tutorial-overlay').remove();
-									$("body").append("<div class=\"tutorial-overlay\" onclick=\"$(this).fadeOut(200);setTimeout(function() {$('div.tutorial-overlay').remove()}, 200);\" style=\"display: none;\"><img src=\"demo/demo-4.png\" style=\"position: absolute; top: 0%; left: 50%; margin-left: -300px;\"></div>");
-									setTimeout(function() {
-										$('div.tutorial-overlay').fadeIn(200);
-									}, 300);
-								}, 200);
-							});
-							setTimeout(function() {
-								$('div.tutorial-overlay').fadeIn(200);
-							}, 300);
-						}, 200);
-						
-					})
-					setTimeout(function() {
-						$('div.tutorial-overlay').fadeIn(200);
-					}, 500);
-					demo2complete=true;
-				}
-			});
-			
-			(function() {
-				var old_modal = myApp.modal;
-
-				myApp.modal = function (options) {
-					old_modal(options);
-					$("div.modal").css("margin-left",-$("div.modal").outerWidth()/2)
-				}
-			})();
-			
-			myApp.onPageInit("modals", function() {
-				$('.alert-text-title').on('click', function () {
-				    myApp.alert('Some custom alert text', 'Custom Title!');
-				});
-				$('.confirm-ok-cancel').on('click', function () {
-				    myApp.confirm('Are you sure?', 
-				      function () {
-				        myApp.alert('You clicked OK.');
-				      },
-				      function () {
-				        myApp.alert('You clicked Cancel.');
-				      }
-				    );
-				});
-				$('.prompt-ok').on('click', function () {
-				    myApp.prompt('What is your name?', function (value) {
-				        myApp.alert('Hello, "' + value + '".');
-				    });
-				});
-			});
-			
-			myApp.onPageInit("notifications", function() {
-				$(".notification").on('click', function() {
-					myApp.core.notify({
-						subtitle: "Generic",
-						message: "You just called a Notification. Smashing!",
-						icon: "demo/AppIcon-Generic.png",
-						buttons: [
-							{
-								title: "Custom Button 1",
-								onClick: function() {
-									myApp.alert("You clicked Button 1");
-								}
-							},
-							{
-								title: "Custom Button 2",
-								onClick: function() {
-									myApp.alert("You clicked Button 2");
-								}
-							}
-						]
-					})
-				})
-			});
-		</script>
+		<script src="js/app.js"></script>
 	</body>
 </html>
