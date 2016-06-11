@@ -1,0 +1,17 @@
+.list-block ul li {
+	label.label-radio {
+		transition: opacity 100ms linear, transform 100ms linear;
+
+		&:active, &.active-state {
+			background-color: #242424;
+			opacity: 0.5;
+			transform: scale(0.9738562092) translate3d(0,0,0);
+		}
+
+		input[type=checkbox]:checked~.item-inner, input[type=radio]:checked~.item-inner {
+			background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2026%2020%22%3E%3Cpolygon%20fill%3D%22%234cd964%22%20points%3D%2223.2%2C0%208.8%2C14.4%202.8%2C8.4%200%2C11.2%208.8%2C20%208.8%2C20%208.8%2C20%2026%2C2.8%20%22/%3E%3C/svg%3E") !important;
+			-webkit-background-size: 26px 20px;
+			background-size: 26px 20px;
+		}
+	}
+}

@@ -1,0 +1,76 @@
+div.views {
+	transition: transform 150ms ease-out, opacity 150ms ease-out;
+	-webkit-transition: -webkit-transform 150ms ease-out, opacity 150ms ease-out;
+	
+	&, div.view {
+		z-index: 100;
+	}
+
+	&.modal-in {
+		transition: transform 100ms linear, opacity 100ms linear;
+		-webkit-transition: -webkit-transform 100ms linear, opacity 100ms linear;
+
+		transform: scale(0.9);
+		-webkit-transform: scale(0.9);
+	}	
+	
+	div.view {
+		position: absolute;
+		
+		&:not(.active) {
+			display: none;
+		}
+		
+		&.view-main {
+			z-index: 2;
+			overflow: hidden;
+		}
+		&.view-app {
+			z-index: 1;
+			transform: scale(0);
+			-webkit-transform: scale(0);
+			-moz-transform: scale(0);
+			opacity: 0;
+		}
+		
+		div.pages + div.clock {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 600;
+			transform: translate3d(0, 0, 0);
+			-webkit-transform: translate3d(0, 0, 0);
+			width: 80px;
+			text-align: right;
+			padding-right: 10px;
+			cursor: pointer;
+			
+			p.time {
+				color: #aeb4bf;
+				font-size: 32px;
+				margin: 0;
+				line-height: 44px;
+				-webkit-transition-duration: 300ms;
+				transition-duration: 300ms;
+				
+				&.active, &.active-state {
+					opacity: .3;
+					-webkit-transition-duration: 0ms;
+					transition-duration: 0ms
+				}
+			}
+			&.hidden {
+				display: none;
+			}
+			&.invisible {
+				opacity: 0;
+			}
+		}
+		
+		&.transparent-bg {
+			&, div.pages, div.page {
+				background: transparent;
+			}
+		}
+	}
+}

@@ -1,0 +1,107 @@
+div.navbar {
+	-webkit-transition-duration: 0ms !important;
+	transition-duration: 0ms !important;
+	background-color: #000 !important;
+	height: 42px;
+	
+	div.navbar-inner {
+		margin: 0;
+		padding: 0;
+		height: 42px;
+		color: #007aff;
+		
+		div.left {
+			font-size: 32px;
+			font-weight: 400;
+			width: calc(~"100% - 90px");
+			
+			a.link {
+				color: inherit;
+				&.watch-home {
+					padding-left: 10px;
+				}
+			}
+			
+			span {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis
+			}
+
+			i + span {
+				margin-left: 8px;
+			}
+		}
+		
+		div.center {
+		}
+		
+		div.right {
+			-webkit-animation: none !important;
+			animation: none !important;
+			opacity: 1 !important;
+			width: 84px;
+			height: 42px;
+			-webkit-backface-visibility: hidden;
+			position: absolute;
+			top: 0;
+			right: 0px;
+			display: none;
+			margin: 0;
+			text-align: right;
+
+			p.time {
+				font-size: 30px;
+				font-weight: 400;
+				color: #aeb4bf;
+				margin: 0;
+				line-height: 44px;
+				cursor: pointer;
+
+				-webkit-transition-duration: 300ms;
+				transition-duration: 300ms;
+				
+				&.active, &.active-state {
+					opacity: .3;
+					-webkit-transition-duration: 0ms;
+					transition-duration: 0ms
+				}
+			}
+		}
+		
+		&.navbar-on-left {
+			opacity: 0;
+		}
+		
+		&.navbar-from-right-to-center .right,
+		&.navbar-from-center-to-right .right {
+			-webkit-animation: none !important;
+			animation: none !important;
+			opacity: 0 !important;
+		}
+	}
+	
+	&:after {
+		display: none;
+	}
+	
+	a.link {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+	}
+	
+	.icon.icon-back {
+		background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2012%2020'%3E%3Cpath%20d%3D'M10%2C0l2%2C2l-8%2C8l8%2C8l-2%2C2L0%2C10L10%2C0z'%20fill%3D'%239a9fa9'%2F%3E%3C%2Fsvg%3E");
+	}
+}
+
+&.no-home-links {
+	div.navbar a.link.watch-home,
+	div.clock p.time {
+		cursor: default;
+
+		&:active, &.active-state {
+			opacity: 1 !important;
+		}
+	}
+}

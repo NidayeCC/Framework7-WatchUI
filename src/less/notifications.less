@@ -1,0 +1,250 @@
+div.notifications.watch-notification {
+	display: block;
+	height: 100%;
+	padding: 0 2px;
+	-webkit-backdrop-filter: blur(0px);
+	background: rgba(0,0,0,0);
+	transition: background 600ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-backdrop-filter 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+	-webkit-transition: background 600ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-backdrop-filter 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+
+		div.clock {
+			width: 100%;
+			@media all and (max-width: 767px) {
+				width: 100%;
+				left: 0;
+				top: 0;
+			}
+			
+			height: 42px;
+			-webkit-backface-visibility: hidden;
+			position: fixed;
+			display: block;
+			margin: 0;
+			text-align: right;
+			opacity: 0;
+			transition: opacity 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+			-webkit-transition: opacity 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+			
+			p.time {
+				font-size: 32px;
+				font-weight: 400;
+				color: #aeb4bf;
+				margin: 0;
+				line-height: 44px;
+				padding-right: 10px;
+			}
+			
+			&.hidden {
+				opacity: 0 !important;
+			}
+		}
+
+	
+	div.notification-container {
+		margin: 0 auto;
+		width: 100%;
+		//max-width: 312px;
+		height: 100%;
+		text-align: center;
+		
+		transform: translateZ(0);
+		-webkit-transform: translateZ(0);
+		-webkit-backface-visibility: hidden;
+		
+		
+		div.image-wrapper {
+			width: 196px;
+			height: 196px;
+			overflow: hidden;
+			margin: 0 auto;
+			border-radius: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top:-157px;
+			margin-left: -98px;
+			z-index: 20;
+			box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0);
+			
+			transform: translate3d(0,100vh,0);
+			-webkit-transform: translate3d(0,100vh,0);
+			
+			&:not(.velocity-animating) {
+				transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+				-webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+			}
+			
+			img {
+				width: 196px;
+				height: 196px;
+				margin: -1px;
+				border-radius: 100%;
+
+				transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+				-webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+			}
+		}
+		div.short-look {
+			height: 200px;
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			margin-top: -49px;
+			
+			transform: translate3d(0,100vh,0);
+			transition: transform 600ms cubic-bezier(0.645, 0.045, 0.355, 1), opacity 200ms linear;
+			-webkit-transform: translate3d(0,100vh,0);
+			-webkit-transition: -webkit-transform 600ms cubic-bezier(0.645, 0.045, 0.355, 1), opacity 200ms linear;
+
+			div.watch-notification-title {
+				font-size: 43px;
+				position: absolute;
+				bottom: 45px;
+				width: 100%;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			div.watch-notification-subtitle {
+				text-transform: uppercase;
+				font-size: 26px;
+				letter-spacing: 1px;
+				position: absolute;
+				bottom: 0;
+				width:100%;
+			}
+		}
+		div.long-look {
+			width: 308px;
+			max-width: 100%;
+			margin: 0 auto;
+			position: absolute;
+			left: 50%;
+			margin-left: -154px;
+			top: 100%;
+			padding: 0;
+			
+			div.watch-notification-title {
+				font-weight: 400;
+				font-size: 20px;
+				padding-top: 0px;
+				padding-right: 15px;
+				padding-bottom: 0px;
+				padding-left: 15px;
+				text-align: right;
+				background-color: rgba(99,96,94,0.75);
+				border-radius: 10px 10px 0 0;
+				line-height: 60px;
+				color: #fff;
+				text-transform: uppercase;
+			}
+			div.watch-notification-text {
+				font-size: 32px;
+				margin-top: 0 !important;
+				padding: 20px 15px;
+				line-height: 35px;
+				color: #acb2bd;
+				background-color: rgba(136, 136, 136, .3);
+				border-radius: 0 0 10px 10px;
+				text-align: left;
+				
+				span {
+					color: #fff;
+				}
+			}
+			
+			div.modal-buttons {
+				overflow: visible;
+				display: block !important;
+				height: auto !important;
+				
+				span.modal-button {
+					border-radius: 10px !important;
+					margin-top: 32px;
+					background-color: rgba(136, 136, 136, .3);
+					color: #fff;
+					font-size: 26px;
+					height: 76px;
+					line-height: 76px;
+					-webkit-backface-visibility: hidden;
+					
+					transform: translateZ(0);
+					transition: all 100ms ease;
+					-webkit-transform: translateZ(0);
+					-webkit-transition: all 100ms ease;
+					
+					& + span.modal-button:not(.dismiss) {
+						margin-top: 8px;
+					}
+
+					&:active {
+						background-color: rgba(36, 36, 36, .3) !important;
+						opacity: 0.5;
+						color: rgba(255,255,255,0.5);
+						transform: scale(0.96710526);
+						-webkit-transform: scale(0.96710526);
+					}
+					&:after {
+						display: none;
+					}
+					
+					&.dismiss {
+						background-color: rgba(100, 100, 100, .3);
+						
+						&:active {
+							background-color: rgba(50, 50, 50, .3) !important;
+						}
+					}
+					
+					&:last-child.dismiss {
+						margin-top: 24px;
+					}
+				}
+			}
+		}
+	}
+	
+	&.modal-in{
+		background: rgba(0,0,0,0.75);
+		-webkit-backdrop-filter: blur(20px);
+		div.image-wrapper, div.short-look {
+			transform: translate3d(0,0,0) !important;
+			-webkit-transform: translate3d(0,0,0) !important;
+		}
+	}
+	&.modal-to-long-look, &.modal-out {
+		//background: rgba(0,0,0,0.75);
+		-webkit-backdrop-filter: blur(20px);
+		
+		div.image-wrapper, div.short-look {
+			-webkit-transform: translate3d(0,0,0) !important;
+		}
+		div.image-wrapper {
+			box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.5) !important;
+			top: 5px !important;
+			left: calc(~"50% - 156px + 18px") !important;
+			margin-top: 0 !important;
+			margin-left: 0 !important;
+			width: 86px !important;
+			height: 86px !important;
+			
+			img {
+				width: 88px !important;
+				height: 88px !important;
+			}
+		}
+		div.short-look {
+			opacity: 0;
+		}
+		div.clock {
+			opacity: 1;
+		}
+	}
+	&.done div.clock {
+		transition: opacity 100ms linear;
+		-webkit-transition: opacity 100ms linear;
+	}
+	&:not(.done) {
+		overflow: hidden;
+	}
+}

@@ -1,0 +1,69 @@
+/*
+ * watchUI 2.0
+ * © 2015-2016 Sniper_GER, FESTIVAL
+ * All Rights reserved
+ */
+
+*:not(input) {
+	-webkit-user-select: none;
+}
+::-webkit-scrollbar {
+	//width: 0 !important
+}
+body.watch {
+	background-color: #000;
+	-webkit-font-smoothing: antialiased;
+	
+	&:not(.no-watch-font) {
+		font-size: 32px;
+		font-family: SF Compact Text, Helvetica Neue, Helvetica, Arial, sans-serif;
+		line-height: normal;
+		font-weight: 400;
+		letter-spacing: 0.015em;
+	}
+	
+	p {
+		margin: 12px 0;
+		color: #acb2bf;
+		font-size: 26px;
+		
+		&.title, &.subtitle {
+			padding: 0 17px;
+		}
+		&.title {
+			color: #fff;
+			margin-bottom: 0px;
+			
+			& + p.subtitle {
+				margin-top: 0px;
+			}
+		}
+		&.subtitle {
+			font-size: 26px;
+		}
+	}
+	
+	&:after {
+		display: none;
+		background-image: url(../img/loading.png);
+	}
+
+	@import "views.less";
+	@import "pages.less";
+	@import "navbar.less";
+	@import "content-block.less";
+	@import "lists.less";
+	@import "buttons.less";
+	@import "switches.less";
+	@import "radios.less";
+	@import "picker.less";
+	@import "carousel.less";
+	@import "modals.less";
+	@import "menu.less";
+	@import "scroll-indicator.less";
+	@import "loading.less";
+	@import "notifications.less";
+	@import "update-progress.less";
+	@import "analog-clock";
+	@import "animations.less";
+}

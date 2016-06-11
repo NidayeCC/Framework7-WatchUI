@@ -1,0 +1,28 @@
+.content-block {
+	padding: 0 10px;
+	
+	.content-block-inner {
+		&:before, &:after {
+			display: none;
+		}
+
+		background-color: #000;
+		color: #acb2bf;
+		padding: 0px;
+		margin: 0;
+		
+		p {
+			font-size: 26px;
+		}
+	}
+	& + *:not(.picker-container) {
+		margin-top: 8px !important;
+	}
+}
+
+.content-block-title {
+	margin: 35px 10px 10px;
+	font-size: 26px;
+	letter-spacing: 0.015em;
+	color: #acb2bf;
+}

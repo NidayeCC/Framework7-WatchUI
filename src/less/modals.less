@@ -1,0 +1,77 @@
+div.modal {
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	margin-left: 0;
+	margin-top: 0 !important;
+	overflow: scroll;
+
+	transform-origin: top center;
+	transition: transform 200ms ease-in, opacity 200ms ease-in;
+	-webkit-transition: -webkit-transform 200ms ease-in, opacity 200ms ease-in, -webkit-backdrop-filter 200ms ease-in;
+	-webkit-transform: translate3d(0, 100vh, 0) scale(1);
+    transform: translate3d(0, 100vh, 0) scale(1);
+
+	&.modal-in {
+		-webkit-backdrop-filter: blur(10px);
+		
+		transition: transform 350ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
+		transform: translate3d(0, 0, 0) scale(1);
+		-webkit-transition: -webkit-transform 350ms cubic-bezier(0.175, 0.885, 0.32, 1.1), -webkit-backdrop-filter 200ms linear;
+		-webkit-transform: translate3d(0, 0, 0) scale(1);
+	}
+	&.modal-out {
+		opacity: 1;
+	}
+	
+	div.modal-inner {
+		//margin-top: 114.5px
+		div.modal-title {
+			font-size: 26px;
+		}
+		div.modal-text {
+			overflow: scroll;
+			height: calc(~"100% - 36px");
+		}
+		//max-height: calc(~"100% - 96px");
+		font-size: 26px;
+		color: #fff;
+		background: transparent;
+		
+		&:after {
+			display: none;
+		}
+	}
+	
+	div.modal-buttons {
+		position: absolute;
+		top: calc(~"100% - 66px");
+		width: 100%;
+		height: 64px;
+		
+		span.modal-button {
+			height: 64px;
+			line-height: 64px;
+			background: #323334;
+			color: #fff;
+			font-size: 26px;
+			border-radius: 18px;
+			margin: 2px;
+			transition: opacity 100ms linear, transform 100ms linear;
+			-webkit-transition: opacity 100ms linear, transform 100ms linear;
+
+			
+			&:active, &.active-state {
+				transform: scale(0.96710526);
+				-webkit-transform: scale(0.96710526);
+				opacity: 0.5;
+			}
+		}
+	}
+}
+
+&.frame div.modal:not(.modal-in) {
+	-webkit-transform: translate3d(0, 390px, 0) scale(1);
+    transform: translate3d(0, 390px, 0) scale(1);
+}

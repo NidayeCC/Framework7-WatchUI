@@ -1,0 +1,161 @@
+@-webkit-keyframes pageFromCenterToLeft {
+    from {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0)
+    }
+
+    to {
+        opacity: .9;
+        -webkit-transform: translate3d(-100%, 0, 0)
+    }
+}
+
+@keyframes pageFromCenterToLeft {
+    from {
+	    opacity: 1;
+        transform: translate3d(0, 0, 0)
+    }
+
+    to {
+        opacity: .9;
+        transform: translate3d(-100%, 0, 0)
+    }
+}
+
+@-webkit-keyframes pageFromLeftToCenter {
+    from {
+        opacity: .9;
+        -webkit-transform: translate3d(-100%, 0, 0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0)
+    }
+}
+
+@keyframes pageFromLeftToCenter {
+    from {
+	    opacity: .9;
+        transform: translate3d(-100%, 0, 0)
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0)
+    }
+}
+
+.page-from-center-to-left, .page-from-left-to-center, .previous-page {
+	z-index: 2;
+}
+.page-on-left {
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+}
+
+
+@-webkit-keyframes pageFromRightToCenter {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0, 0) scale(0.8)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0) scale(1)
+    }
+}
+
+@keyframes pageFromRightToCenter {
+    from {
+	    opacity: 0;
+        transform: translate3d(0, 0, 0) scale(0.8)
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@-webkit-keyframes pageFromCenterToRight {
+    from {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0) scale(1)
+    }
+
+    to {
+        opacity: .8;
+        -webkit-transform: translate3d(0, 0, 0) scale(0.8)
+    }
+}
+
+@keyframes pageFromCenterToRight {
+    from {
+	    opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1)
+    }
+
+    to {
+        opacity: .8;
+        transform: translate3d(0, 0, 0) scale(0.8);
+    }
+}
+
+@animTime: 300ms;
+
+.page-from-right-to-center {
+  -webkit-animation: pageFromRightToCenter @animTime forwards;
+  animation: pageFromRightToCenter @animTime forwards;
+}
+.page-from-right-to-center:before {
+  -webkit-animation: pageFromRightToCenterShadow @animTime forwards;
+  animation: pageFromRightToCenterShadow @animTime forwards;
+}
+.page-from-center-to-right {
+  -webkit-animation: pageFromCenterToRight @animTime forwards;
+  animation: pageFromCenterToRight @animTime forwards;
+}
+.page-from-center-to-right:before {
+  -webkit-animation: pageFromCenterToRightShadow @animTime forwards;
+  animation: pageFromCenterToRightShadow @animTime forwards;
+}
+.page-from-center-to-left {
+  -webkit-animation: pageFromCenterToLeft @animTime forwards;
+  animation: pageFromCenterToLeft @animTime forwards;
+}
+.page-from-left-to-center {
+  -webkit-animation: pageFromLeftToCenter @animTime forwards;
+  animation: pageFromLeftToCenter @animTime forwards;
+}
+
+.navbar-from-right-to-center .left.sliding .back.link .icon,
+.navbar-from-center-to-right .left.sliding .back.link .icon,
+.navbar-from-center-to-left .left.sliding .back.link .icon,
+.navbar-from-left-to-center .left.sliding .back.link .icon {
+  -webkit-transition-duration: @animTime;
+  transition-duration: @animTime;
+}
+.navbar-from-right-to-center .sliding,
+.navbar-from-center-to-right .sliding,
+.navbar-from-center-to-left .sliding,
+.navbar-from-left-to-center .sliding {
+  -webkit-transition-duration: @animTime;
+  transition-duration: @animTime;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.page-from-right-to-center, .page-from-center-to-right, .active-page {
+	z-index: 1;
+}
+.page-on-right {
+	-webkit-transform: translate3d(0, 0, 0) scale(0.8);
+	transform: translate3d(0, 0, 0) scale(0.8);
+}
+
+
+div.navbar-inner.navbar-on-left.visible {
+	opacity: 1 !important;
+}

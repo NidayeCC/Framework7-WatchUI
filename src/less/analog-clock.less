@@ -1,0 +1,9 @@
+svg g[data-name="second_hand"],
+svg g[data-name="minute_hand"],
+svg g[data-name="hour_hand"] {
+	transform-origin: 156px 156px;
+	
+	&.animating {
+		transition: transform 1000ms linear;
+	}
+}

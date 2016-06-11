@@ -1,0 +1,32 @@
+label.label-switch {
+	width: 72px;
+	height: 44px;
+	border-radius: 22px;
+	
+	div.checkbox {
+		width: 72px;
+		height: 44px;
+		border-radius: 22px;
+		background: #9ba0aa;
+		
+		&:before {
+			display: none;
+		}
+		&:after {
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+			box-shadow: none;
+		}
+	}
+	input[type=checkbox]:checked+.checkbox:after {
+		-webkit-transform: translateX(28px);
+		transform: translateX(28px)
+	}
+}
+div.page.page-from-right-to-center label.label-switch div.checkbox {
+	&, &:after {
+	-webkit-transition-duration: 0ms !important;
+	transition-duration: 0ms !important;
+	}
+}

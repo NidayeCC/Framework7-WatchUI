@@ -1,0 +1,62 @@
+{
+	"apps": [
+		{
+		    "title": "watchUI demo",
+		    "identifier": "demo",
+		    "bundleID": "de.sniperger.watchui.demo",
+		    "executable": "app-index.html",
+		    "icon": "apps/de.sniperger.watchui.demo/WatchUI.png",
+		    "color": "#ff730f",
+		    "position": [1,-1,0]
+		}, {
+		    "title": "",
+		    "identifier": "",
+		    "bundleID": "test",
+		    "executable": "test",
+		    "icon": "img/icons/AppIcon-Generic.png",
+		    "position": [0,1,0]
+		}, {
+		    "title": "Settings",
+		    "identifier": "NanoSettings",
+		    "bundleID": "com.apple.NanoSettings",
+		    "executable": "NanoSettings.html",
+		    "icon": "img/icons/Settings@2x.png",
+		    "position": [1,0,0]
+		}, {
+		    "title": "Clock",
+		    "identifier": "NanoTimer",
+		    "bundleID": "com.apple.NanoTimer",
+		    "executable": "NanoTimer.html",
+		    "icon": "img/icons/Clock@2x.png",
+		    "isClockApp": true,
+		    "position": [0,0,0]
+		}
+	],
+	"grid": [
+		[-2,0,0],
+		[-2,1,0],
+		[-2,2,0],
+
+		[-1,-1,0],
+		[-1,0,0],
+		[-1,1,0],
+		[-1,2,0],
+
+		[0,-2,0],
+		[0,-1,0],
+		[0,0,0],
+		[0,1,0],
+		[0,2,0],
+
+		[1,-2,0],
+		[1,-1,0],
+		[1,0,0],
+		[1,1,0],
+
+		[2,-2,0],
+		[2,-1,0],
+		[2,0,0],
+
+		[3,-2,0]
+	]
+}

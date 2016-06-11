@@ -1,0 +1,64 @@
+div.loading-wrapper {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 550;
+	animation: loading-fade-in 300ms;
+	
+	p.app-title {
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		text-align: center;
+		color: #fff;
+	}
+	
+	div.error-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -72px;
+		margin-left: -36px;
+		width: 72px;
+		height: 72px;
+		background-size: 100%;
+		border-radius: 36px;
+	}
+
+	div.loading {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -72px;
+		margin-left: -36px;
+		width: 72px;
+		height: 72px;
+		background-image: url(../img/loading.png);
+		background-size: 72px auto;
+		background-position: 0 0;
+		z-index: 600;
+		
+		animation: loading 1s steps(30) infinite;
+		
+		&:not(.visible) {
+			display: none;
+			animation: none;
+		}
+	}
+
+}
+
+@keyframes loading-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes loading {
+	0% { background-position: 0 0; }
+	100% { background-position: 0 -2160px; }
+}

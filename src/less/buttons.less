@@ -1,0 +1,31 @@
+a.button.button-big {
+	border: none;
+	border-radius: 15px;
+	height: 75px;
+	margin: 0 -10px;
+	font-size: 26px;
+	line-height: 75px;
+	background-color: #242424;
+	color: #fff;
+
+	transition: opacity 100ms linear, transform 100ms linear;
+	&:active, &.active-state {
+		background-color: #242424;
+		opacity: 0.5;
+		transform: scale(0.9738562092) translate3d(0,0,0);
+	}
+}
+
+div.row div.col-50 {
+	width: 50%;
+	&.left {
+		a.button.button-big {
+			margin-right: 4px;
+		}
+	}
+	&.right {
+		a.button.button-big {
+			margin-left: 4px;
+		}
+	}
+}

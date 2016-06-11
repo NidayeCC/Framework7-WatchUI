@@ -1,0 +1,1154 @@
+/*
+ * watchUI 2.0
+ * © 2015-2016 Sniper_GER, FESTIVAL
+ * All Rights reserved
+ */
+@font-face {
+  font-family: SF Compact Text;
+  font-weight: 400;
+  font-style: normal;
+  src: url(u0ytq29tcgfjdc1eaxnwbgf5lvjlz3vs.otf);
+}
+*:not(input) {
+  -webkit-user-select: none;
+}
+body.watch {
+  background-color: #000;
+  -webkit-font-smoothing: antialiased;
+}
+body.watch:not(.no-watch-font) {
+  font-size: 32px;
+  font-family: SF Compact Text, Helvetica Neue, Helvetica, Arial, sans-serif;
+  line-height: normal;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+}
+body.watch p {
+  margin: 12px 0;
+  color: #acb2bf;
+  font-size: 26px;
+}
+body.watch p.title,
+body.watch p.subtitle {
+  padding: 0 17px;
+}
+body.watch p.title {
+  color: #fff;
+  margin-bottom: 0px;
+}
+body.watch p.title + p.subtitle {
+  margin-top: 0px;
+}
+body.watch p.subtitle {
+  font-size: 26px;
+}
+body.watch:after {
+  display: none;
+  background-image: url(../img/loading.png);
+}
+body.watch div.views {
+  transition: transform 150ms ease-out, opacity 150ms ease-out;
+  -webkit-transition: -webkit-transform 150ms ease-out, opacity 150ms ease-out;
+}
+body.watch div.views,
+body.watch div.views div.view {
+  z-index: 100;
+}
+body.watch div.views.modal-in {
+  transition: transform 100ms linear, opacity 100ms linear;
+  -webkit-transition: -webkit-transform 100ms linear, opacity 100ms linear;
+  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+}
+body.watch div.views div.view {
+  position: absolute;
+}
+body.watch div.views div.view:not(.active) {
+  display: none;
+}
+body.watch div.views div.view.view-main {
+  z-index: 2;
+  overflow: hidden;
+}
+body.watch div.views div.view.view-app {
+  z-index: 1;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  opacity: 0;
+}
+body.watch div.views div.view div.pages + div.clock {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 600;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  width: 80px;
+  text-align: right;
+  padding-right: 10px;
+  cursor: pointer;
+}
+body.watch div.views div.view div.pages + div.clock p.time {
+  color: #aeb4bf;
+  font-size: 32px;
+  margin: 0;
+  line-height: 44px;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+body.watch div.views div.view div.pages + div.clock p.time.active,
+body.watch div.views div.view div.pages + div.clock p.time.active-state {
+  opacity: .3;
+  -webkit-transition-duration: 0ms;
+  transition-duration: 0ms;
+}
+body.watch div.views div.view div.pages + div.clock.hidden {
+  display: none;
+}
+body.watch div.views div.view div.pages + div.clock.invisible {
+  opacity: 0;
+}
+body.watch div.views div.view.transparent-bg,
+body.watch div.views div.view.transparent-bg div.pages,
+body.watch div.views div.view.transparent-bg div.page {
+  background: transparent;
+}
+body.watch div.page {
+  background-color: #000;
+}
+body.watch div.page div.content-block {
+  margin: 0;
+}
+body.watch div.navbar {
+  -webkit-transition-duration: 0ms !important;
+  transition-duration: 0ms !important;
+  background-color: #000 !important;
+  height: 42px;
+}
+body.watch div.navbar div.navbar-inner {
+  margin: 0;
+  padding: 0;
+  height: 42px;
+  color: #007aff;
+}
+body.watch div.navbar div.navbar-inner div.left {
+  font-size: 32px;
+  font-weight: 400;
+  width: calc(100% - 90px);
+}
+body.watch div.navbar div.navbar-inner div.left a.link {
+  color: inherit;
+}
+body.watch div.navbar div.navbar-inner div.left a.link.watch-home {
+  padding-left: 10px;
+}
+body.watch div.navbar div.navbar-inner div.left span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+body.watch div.navbar div.navbar-inner div.left i + span {
+  margin-left: 8px;
+}
+body.watch div.navbar div.navbar-inner div.right {
+  -webkit-animation: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  width: 84px;
+  height: 42px;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  display: none;
+  margin: 0;
+  text-align: right;
+}
+body.watch div.navbar div.navbar-inner div.right p.time {
+  font-size: 30px;
+  font-weight: 400;
+  color: #aeb4bf;
+  margin: 0;
+  line-height: 44px;
+  cursor: pointer;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+body.watch div.navbar div.navbar-inner div.right p.time.active,
+body.watch div.navbar div.navbar-inner div.right p.time.active-state {
+  opacity: .3;
+  -webkit-transition-duration: 0ms;
+  transition-duration: 0ms;
+}
+body.watch div.navbar div.navbar-inner.navbar-on-left {
+  opacity: 0;
+}
+body.watch div.navbar div.navbar-inner.navbar-from-right-to-center .right,
+body.watch div.navbar div.navbar-inner.navbar-from-center-to-right .right {
+  -webkit-animation: none !important;
+  animation: none !important;
+  opacity: 0 !important;
+}
+body.watch div.navbar:after {
+  display: none;
+}
+body.watch div.navbar a.link {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+body.watch div.navbar .icon.icon-back {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2012%2020'%3E%3Cpath%20d%3D'M10%2C0l2%2C2l-8%2C8l8%2C8l-2%2C2L0%2C10L10%2C0z'%20fill%3D'%239a9fa9'%2F%3E%3C%2Fsvg%3E");
+}
+body.watch.no-home-links div.navbar a.link.watch-home,
+body.watch.no-home-links div.clock p.time {
+  cursor: default;
+}
+body.watch.no-home-links div.navbar a.link.watch-home:active,
+body.watch.no-home-links div.clock p.time:active,
+body.watch.no-home-links div.navbar a.link.watch-home.active-state,
+body.watch.no-home-links div.clock p.time.active-state {
+  opacity: 1 !important;
+}
+body.watch .content-block {
+  padding: 0 10px;
+}
+body.watch .content-block .content-block-inner {
+  background-color: #000;
+  color: #acb2bf;
+  padding: 0px;
+  margin: 0;
+}
+body.watch .content-block .content-block-inner:before,
+body.watch .content-block .content-block-inner:after {
+  display: none;
+}
+body.watch .content-block .content-block-inner p {
+  font-size: 26px;
+}
+body.watch .content-block + *:not(.picker-container) {
+  margin-top: 8px !important;
+}
+body.watch .content-block-title {
+  margin: 35px 10px 10px;
+  font-size: 26px;
+  letter-spacing: 0.015em;
+  color: #acb2bf;
+}
+body.watch .list-block {
+  margin: 0;
+}
+body.watch .list-block ul {
+  background: transparent;
+  overflow: hidden;
+  margin: 0 2px;
+}
+body.watch .list-block ul:before,
+body.watch .list-block ul:after {
+  display: none;
+}
+body.watch .list-block ul li a {
+  border-radius: 15px;
+  transition: opacity 100ms linear, transform 100ms linear;
+}
+body.watch .list-block ul li a:active,
+body.watch .list-block ul li a.active-state {
+  background-color: #242424;
+  opacity: 0.5;
+  transform: scale(0.97385621) translate3d(0, 0, 0);
+}
+body.watch .list-block ul li .item-content {
+  padding-left: 17px;
+  background-color: #242424;
+}
+body.watch .list-block ul li .item-content .item-inner {
+  min-height: 80px;
+  font-size: 32px;
+  letter-spacing: 0.015em;
+  color: #fff;
+  overflow: visible;
+  background-image: none;
+  padding-right: 17px;
+}
+body.watch .list-block ul li .item-content .item-inner:after {
+  left: -19px;
+  right: -19px;
+  background-color: #000;
+  width: auto;
+}
+body.watch .list-block ul li .item-content .item-inner .item-after {
+  color: #acb2bf;
+  line-height: 28px;
+}
+body.watch .list-block ul li .item-content .item-inner .item-after p {
+  font-size: 32px;
+  margin: 0;
+}
+body.watch .list-block ul li .item-content .item-media i.icon {
+  border-radius: 29px;
+}
+body.watch .list-block ul li .item-content .item-media + .item-inner:after {
+  left: -63px;
+}
+body.watch .list-block.no-margin ul li:first-child .item-content {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+body.watch .list-block.no-margin ul li:last-child .item-content {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+body.watch .list-block:not(.no-margin) ul li:not(:last-child) {
+  margin-bottom: 8px;
+}
+body.watch .list-block:not(.no-margin) ul li .item-content {
+  border-radius: 15px;
+}
+body.watch .list-block:not(.no-margin) ul li .item-content .item-inner:after {
+  display: none;
+}
+body.watch .list-block + *:not(.picker-container) {
+  margin-top: 8px;
+}
+body.watch .badge {
+  font-size: 26px;
+  border-radius: 32px;
+  padding: 0 8px;
+  height: 32px;
+  line-height: 32px;
+}
+body.watch a.button.button-big {
+  border: none;
+  border-radius: 15px;
+  height: 75px;
+  margin: 0 -10px;
+  font-size: 26px;
+  line-height: 75px;
+  background-color: #242424;
+  color: #fff;
+  transition: opacity 100ms linear, transform 100ms linear;
+}
+body.watch a.button.button-big:active,
+body.watch a.button.button-big.active-state {
+  background-color: #242424;
+  opacity: 0.5;
+  transform: scale(0.97385621) translate3d(0, 0, 0);
+}
+body.watch div.row div.col-50 {
+  width: 50%;
+}
+body.watch div.row div.col-50.left a.button.button-big {
+  margin-right: 4px;
+}
+body.watch div.row div.col-50.right a.button.button-big {
+  margin-left: 4px;
+}
+body.watch label.label-switch {
+  width: 72px;
+  height: 44px;
+  border-radius: 22px;
+}
+body.watch label.label-switch div.checkbox {
+  width: 72px;
+  height: 44px;
+  border-radius: 22px;
+  background: #9ba0aa;
+}
+body.watch label.label-switch div.checkbox:before {
+  display: none;
+}
+body.watch label.label-switch div.checkbox:after {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  box-shadow: none;
+}
+body.watch label.label-switch input[type=checkbox]:checked + .checkbox:after {
+  -webkit-transform: translateX(28px);
+  transform: translateX(28px);
+}
+body.watch div.page.page-from-right-to-center label.label-switch div.checkbox,
+body.watch div.page.page-from-right-to-center label.label-switch div.checkbox:after {
+  -webkit-transition-duration: 0ms !important;
+  transition-duration: 0ms !important;
+}
+body.watch .list-block ul li label.label-radio {
+  transition: opacity 100ms linear, transform 100ms linear;
+}
+body.watch .list-block ul li label.label-radio:active,
+body.watch .list-block ul li label.label-radio.active-state {
+  background-color: #242424;
+  opacity: 0.5;
+  transform: scale(0.97385621) translate3d(0, 0, 0);
+}
+body.watch .list-block ul li label.label-radio input[type=checkbox]:checked ~ .item-inner,
+body.watch .list-block ul li label.label-radio input[type=radio]:checked ~ .item-inner {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2026%2020%22%3E%3Cpolygon%20fill%3D%22%234cd964%22%20points%3D%2223.2%2C0%208.8%2C14.4%202.8%2C8.4%200%2C11.2%208.8%2C20%208.8%2C20%208.8%2C20%2026%2C2.8%20%22/%3E%3C/svg%3E") !important;
+  -webkit-background-size: 26px 20px;
+  background-size: 26px 20px;
+}
+body.watch div.picker-modal div.picker-center-highlight {
+  display: none;
+}
+body.watch div.picker-modal .picker-item.picker-selected {
+  color: #fff;
+}
+@media all and (min-width: 768px) {
+  body.watch.frame div.watch-frame {
+    width: 456px;
+    height: 532px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -266px;
+    margin-left: -228px;
+    border-radius: 86px;
+    background: #aeb4bf;
+  }
+  body.watch.frame div.watch-frame div.watch-frame-inner {
+    width: 416px;
+    height: 490px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -245px;
+    margin-left: -208px;
+    border-radius: 65px;
+    background: #000;
+  }
+  body.watch.frame div.watch-wrapper {
+    width: 312px;
+    height: 390px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -195px;
+    margin-left: -156px;
+    overflow: hidden;
+  }
+}
+@media all and (max-width: 767px) {
+  body.watch div.watch-frame,
+  body.watch div.watch-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+body.watch:not(.frame) div.watch-frame,
+body.watch:not(.frame) div.watch-wrapper {
+  width: 100%;
+  height: 100%;
+}
+body.watch div.view-main div.pages,
+body.watch div.view-main div.page,
+body.watch div.view-main div.page-content {
+  background-color: transparent;
+}
+body.watch #screen-container {
+  bottom: 0;
+  color: white;
+  height: 100%;
+  left: 0;
+  margin: auto;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  background-color: transparent;
+  transition: transform 3000ms linear;
+}
+body.watch .appicon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  transform-origin: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: black;
+  text-align: center;
+  line-height: 16px;
+  box-sizing: border-box;
+  background-size: 100%;
+  overflow: hidden;
+}
+body.watch .appicon img,
+body.watch .appicon svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body.watch .appicon.translucent {
+  opacity: 0.5 !important;
+}
+body.watch .appicon.transition {
+  transition: opacity 100ms linear, transform 100ms linear;
+}
+body.watch .appicon.fade-out {
+  transition: opacity 200ms linear, transform 100ms linear;
+  opacity: 0;
+}
+body.watch .appicon.fade-in {
+  animation: fade-in 200ms linear;
+}
+body.watch .appicon.clock-app:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 50%;
+  transition: transform 1750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  transform: scale(0);
+}
+body.watch .appicon.app-open.clock-app:after {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body.watch div.modal {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  margin-left: 0;
+  margin-top: 0 !important;
+  overflow: scroll;
+  transform-origin: top center;
+  transition: transform 200ms ease-in, opacity 200ms ease-in;
+  -webkit-transition: -webkit-transform 200ms ease-in, opacity 200ms ease-in, -webkit-backdrop-filter 200ms ease-in;
+  -webkit-transform: translate3d(0, 100vh, 0) scale(1);
+  transform: translate3d(0, 100vh, 0) scale(1);
+}
+body.watch div.modal.modal-in {
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 350ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  transform: translate3d(0, 0, 0) scale(1);
+  -webkit-transition: -webkit-transform 350ms cubic-bezier(0.175, 0.885, 0.32, 1.1), -webkit-backdrop-filter 200ms linear;
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+}
+body.watch div.modal.modal-out {
+  opacity: 1;
+}
+body.watch div.modal div.modal-inner {
+  font-size: 26px;
+  color: #fff;
+  background: transparent;
+}
+body.watch div.modal div.modal-inner div.modal-title {
+  font-size: 26px;
+}
+body.watch div.modal div.modal-inner div.modal-text {
+  overflow: scroll;
+  height: calc(100% - 36px);
+}
+body.watch div.modal div.modal-inner:after {
+  display: none;
+}
+body.watch div.modal div.modal-buttons {
+  position: absolute;
+  top: calc(100% - 66px);
+  width: 100%;
+  height: 64px;
+}
+body.watch div.modal div.modal-buttons span.modal-button {
+  height: 64px;
+  line-height: 64px;
+  background: #323334;
+  color: #fff;
+  font-size: 26px;
+  border-radius: 18px;
+  margin: 2px;
+  transition: opacity 100ms linear, transform 100ms linear;
+  -webkit-transition: opacity 100ms linear, transform 100ms linear;
+}
+body.watch div.modal div.modal-buttons span.modal-button:active,
+body.watch div.modal div.modal-buttons span.modal-button.active-state {
+  transform: scale(0.96710526);
+  -webkit-transform: scale(0.96710526);
+  opacity: 0.5;
+}
+body.watch.frame div.modal:not(.modal-in) {
+  -webkit-transform: translate3d(0, 390px, 0) scale(1);
+  transform: translate3d(0, 390px, 0) scale(1);
+}
+body.watch div.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20000;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(20px);
+  text-align: center;
+  font-size: 0;
+  opacity: 0;
+  transition: opacity 100ms cubic-bezier(0.55, 0.055, 0.675, 0.1);
+}
+body.watch div.menu:not(.visible) {
+  display: none;
+}
+body.watch div.menu.menu-in {
+  transition: opacity 300ms cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 1;
+  pointer-events: none;
+}
+body.watch div.menu.menu-in div.menu-inner {
+  transition: transform 300ms cubic-bezier(0.19, 1, 0.22, 1);
+  transform: scale(1);
+}
+body.watch div.menu.menu-done {
+  opacity: 1;
+}
+body.watch div.menu.menu-done div.menu-inner {
+  transform: scale(1);
+}
+body.watch div.menu div.menu-inner {
+  width: 312px;
+  height: 390px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  margin-top: -195px;
+  transition: transform 100ms cubic-bezier(0.55, 0.055, 0.675, 0.1);
+  transform: scale(2);
+}
+body.watch div.menu div.icon {
+  width: calc(50% - 2px);
+  height: 50%;
+  display: inline-block;
+  transition: opacity 100ms linear, transform 100ms linear;
+}
+body.watch div.menu div.icon:active,
+body.watch div.menu div.icon.active-state {
+  opacity: 0.5;
+  transform: scale(0.83333333) translate3d(0, 0, 0);
+}
+body.watch div.menu div.icon div.icon-inner {
+  width: 120px;
+  height: 120px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 60px;
+  margin: 20px auto 10px;
+}
+body.watch div.menu div.icon div.icon-inner i {
+  position: relative;
+  top: 20px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+}
+body.watch div.menu div.icon div.item-description {
+  font-size: 26px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+body.watch div.scroll-indicator {
+  position: absolute;
+  top: 50px;
+  right: 4px;
+  width: 12px;
+  height: 76px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 300ms linear;
+}
+body.watch div.scroll-indicator.visible {
+  transition: opacity 0ms linear;
+  opacity: 1;
+}
+body.watch div.scroll-indicator div.scroll-indicator-inner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin-top: 2px;
+  margin-left: 2px;
+  width: 8px;
+  max-height: 72px;
+  height: 100%;
+  border-radius: 4px;
+  background-color: #4cd964;
+}
+body.watch div.loading-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 550;
+  animation: loading-fade-in 300ms;
+}
+body.watch div.loading-wrapper p.app-title {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+body.watch div.loading-wrapper div.error-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -72px;
+  margin-left: -36px;
+  width: 72px;
+  height: 72px;
+  background-size: 100%;
+  border-radius: 36px;
+}
+body.watch div.loading-wrapper div.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -72px;
+  margin-left: -36px;
+  width: 72px;
+  height: 72px;
+  background-image: url(../img/loading.png);
+  background-size: 72px auto;
+  background-position: 0 0;
+  z-index: 600;
+  animation: loading 1s steps(30) infinite;
+}
+body.watch div.loading-wrapper div.loading:not(.visible) {
+  display: none;
+  animation: none;
+}
+@keyframes loading-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes loading {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -2160px;
+  }
+}
+body.watch div.notifications.watch-notification {
+  display: block;
+  height: 100%;
+  padding: 0 2px;
+  -webkit-backdrop-filter: blur(0px);
+  background: rgba(0, 0, 0, 0);
+  transition: background 600ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-backdrop-filter 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition: background 600ms cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-backdrop-filter 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+body.watch div.notifications.watch-notification div.clock {
+  width: 100%;
+  height: 42px;
+  -webkit-backface-visibility: hidden;
+  position: fixed;
+  display: block;
+  margin: 0;
+  text-align: right;
+  opacity: 0;
+  transition: opacity 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition: opacity 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+@media all and (max-width: 767px) {
+  body.watch div.notifications.watch-notification div.clock {
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+}
+body.watch div.notifications.watch-notification div.clock p.time {
+  font-size: 32px;
+  font-weight: 400;
+  color: #aeb4bf;
+  margin: 0;
+  line-height: 44px;
+  padding-right: 10px;
+}
+body.watch div.notifications.watch-notification div.clock.hidden {
+  opacity: 0 !important;
+}
+body.watch div.notifications.watch-notification div.notification-container {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+body.watch div.notifications.watch-notification div.notification-container div.image-wrapper {
+  width: 196px;
+  height: 196px;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -157px;
+  margin-left: -98px;
+  z-index: 20;
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0);
+  transform: translate3d(0, 100vh, 0);
+  -webkit-transform: translate3d(0, 100vh, 0);
+}
+body.watch div.notifications.watch-notification div.notification-container div.image-wrapper:not(.velocity-animating) {
+  transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+body.watch div.notifications.watch-notification div.notification-container div.image-wrapper img {
+  width: 196px;
+  height: 196px;
+  margin: -1px;
+  border-radius: 100%;
+  transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition: all 600ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+body.watch div.notifications.watch-notification div.notification-container div.short-look {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  margin-top: -49px;
+  transform: translate3d(0, 100vh, 0);
+  transition: transform 600ms cubic-bezier(0.645, 0.045, 0.355, 1), opacity 200ms linear;
+  -webkit-transform: translate3d(0, 100vh, 0);
+  -webkit-transition: -webkit-transform 600ms cubic-bezier(0.645, 0.045, 0.355, 1), opacity 200ms linear;
+}
+body.watch div.notifications.watch-notification div.notification-container div.short-look div.watch-notification-title {
+  font-size: 43px;
+  position: absolute;
+  bottom: 45px;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+body.watch div.notifications.watch-notification div.notification-container div.short-look div.watch-notification-subtitle {
+  text-transform: uppercase;
+  font-size: 26px;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look {
+  width: 308px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  margin-left: -154px;
+  top: 100%;
+  padding: 0;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.watch-notification-title {
+  font-weight: 400;
+  font-size: 20px;
+  padding-top: 0px;
+  padding-right: 15px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  text-align: right;
+  background-color: rgba(99, 96, 94, 0.75);
+  border-radius: 10px 10px 0 0;
+  line-height: 60px;
+  color: #fff;
+  text-transform: uppercase;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.watch-notification-text {
+  font-size: 32px;
+  margin-top: 0 !important;
+  padding: 20px 15px;
+  line-height: 35px;
+  color: #acb2bd;
+  background-color: rgba(136, 136, 136, 0.3);
+  border-radius: 0 0 10px 10px;
+  text-align: left;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.watch-notification-text span {
+  color: #fff;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.modal-buttons {
+  overflow: visible;
+  display: block !important;
+  height: auto !important;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.modal-buttons span.modal-button {
+  border-radius: 10px !important;
+  margin-top: 32px;
+  background-color: rgba(136, 136, 136, 0.3);
+  color: #fff;
+  font-size: 26px;
+  height: 76px;
+  line-height: 76px;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: all 100ms ease;
+  -webkit-transform: translateZ(0);
+  -webkit-transition: all 100ms ease;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.modal-buttons span.modal-button + span.modal-button:not(.dismiss) {
+  margin-top: 8px;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.modal-buttons span.modal-button:active {
+  background-color: rgba(36, 36, 36, 0.3) !important;
+  opacity: 0.5;
+  color: rgba(255, 255, 255, 0.5);
+  transform: scale(0.96710526);
+  -webkit-transform: scale(0.96710526);
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.modal-buttons span.modal-button:after {
+  display: none;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.modal-buttons span.modal-button.dismiss {
+  background-color: rgba(100, 100, 100, 0.3);
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.modal-buttons span.modal-button.dismiss:active {
+  background-color: rgba(50, 50, 50, 0.3) !important;
+}
+body.watch div.notifications.watch-notification div.notification-container div.long-look div.modal-buttons span.modal-button:last-child.dismiss {
+  margin-top: 24px;
+}
+body.watch div.notifications.watch-notification.modal-in {
+  background: rgba(0, 0, 0, 0.75);
+  -webkit-backdrop-filter: blur(20px);
+}
+body.watch div.notifications.watch-notification.modal-in div.image-wrapper,
+body.watch div.notifications.watch-notification.modal-in div.short-look {
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+}
+body.watch div.notifications.watch-notification.modal-to-long-look,
+body.watch div.notifications.watch-notification.modal-out {
+  -webkit-backdrop-filter: blur(20px);
+}
+body.watch div.notifications.watch-notification.modal-to-long-look div.image-wrapper,
+body.watch div.notifications.watch-notification.modal-out div.image-wrapper,
+body.watch div.notifications.watch-notification.modal-to-long-look div.short-look,
+body.watch div.notifications.watch-notification.modal-out div.short-look {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+}
+body.watch div.notifications.watch-notification.modal-to-long-look div.image-wrapper,
+body.watch div.notifications.watch-notification.modal-out div.image-wrapper {
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.5) !important;
+  top: 5px !important;
+  left: calc(50% - 156px + 18px) !important;
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  width: 86px !important;
+  height: 86px !important;
+}
+body.watch div.notifications.watch-notification.modal-to-long-look div.image-wrapper img,
+body.watch div.notifications.watch-notification.modal-out div.image-wrapper img {
+  width: 88px !important;
+  height: 88px !important;
+}
+body.watch div.notifications.watch-notification.modal-to-long-look div.short-look,
+body.watch div.notifications.watch-notification.modal-out div.short-look {
+  opacity: 0;
+}
+body.watch div.notifications.watch-notification.modal-to-long-look div.clock,
+body.watch div.notifications.watch-notification.modal-out div.clock {
+  opacity: 1;
+}
+body.watch div.notifications.watch-notification.done div.clock {
+  transition: opacity 100ms linear;
+  -webkit-transition: opacity 100ms linear;
+}
+body.watch div.notifications.watch-notification:not(.done) {
+  overflow: hidden;
+}
+body.watch div.update-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 30000;
+}
+body.watch div.update-progress canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  width: 100%;
+  max-width: 312px;
+}
+body.watch svg g[data-name="second_hand"],
+body.watch svg g[data-name="minute_hand"],
+body.watch svg g[data-name="hour_hand"] {
+  transform-origin: 156px 156px;
+}
+body.watch svg g[data-name="second_hand"].animating,
+body.watch svg g[data-name="minute_hand"].animating,
+body.watch svg g[data-name="hour_hand"].animating {
+  transition: transform 1000ms linear;
+}
+@-webkit-keyframes pageFromCenterToLeft {
+  from {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: .9;
+    -webkit-transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes pageFromCenterToLeft {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: .9;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@-webkit-keyframes pageFromLeftToCenter {
+  from {
+    opacity: .9;
+    -webkit-transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes pageFromLeftToCenter {
+  from {
+    opacity: .9;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+body.watch .page-from-center-to-left,
+body.watch .page-from-left-to-center,
+body.watch .previous-page {
+  z-index: 2;
+}
+body.watch .page-on-left {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+@-webkit-keyframes pageFromRightToCenter {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes pageFromRightToCenter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@-webkit-keyframes pageFromCenterToRight {
+  from {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: .8;
+    -webkit-transform: translate3d(0, 0, 0) scale(0.8);
+  }
+}
+@keyframes pageFromCenterToRight {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: .8;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+}
+body.watch .page-from-right-to-center {
+  -webkit-animation: pageFromRightToCenter 300ms forwards;
+  animation: pageFromRightToCenter 300ms forwards;
+}
+body.watch .page-from-right-to-center:before {
+  -webkit-animation: pageFromRightToCenterShadow 300ms forwards;
+  animation: pageFromRightToCenterShadow 300ms forwards;
+}
+body.watch .page-from-center-to-right {
+  -webkit-animation: pageFromCenterToRight 300ms forwards;
+  animation: pageFromCenterToRight 300ms forwards;
+}
+body.watch .page-from-center-to-right:before {
+  -webkit-animation: pageFromCenterToRightShadow 300ms forwards;
+  animation: pageFromCenterToRightShadow 300ms forwards;
+}
+body.watch .page-from-center-to-left {
+  -webkit-animation: pageFromCenterToLeft 300ms forwards;
+  animation: pageFromCenterToLeft 300ms forwards;
+}
+body.watch .page-from-left-to-center {
+  -webkit-animation: pageFromLeftToCenter 300ms forwards;
+  animation: pageFromLeftToCenter 300ms forwards;
+}
+body.watch .navbar-from-right-to-center .left.sliding .back.link .icon,
+body.watch .navbar-from-center-to-right .left.sliding .back.link .icon,
+body.watch .navbar-from-center-to-left .left.sliding .back.link .icon,
+body.watch .navbar-from-left-to-center .left.sliding .back.link .icon {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+body.watch .navbar-from-right-to-center .sliding,
+body.watch .navbar-from-center-to-right .sliding,
+body.watch .navbar-from-center-to-left .sliding,
+body.watch .navbar-from-left-to-center .sliding {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-animation: none;
+  animation: none;
+}
+body.watch .page-from-right-to-center,
+body.watch .page-from-center-to-right,
+body.watch .active-page {
+  z-index: 1;
+}
+body.watch .page-on-right {
+  -webkit-transform: translate3d(0, 0, 0) scale(0.8);
+  transform: translate3d(0, 0, 0) scale(0.8);
+}
+body.watch div.navbar-inner.navbar-on-left.visible {
+  opacity: 1 !important;
+}
