@@ -243,7 +243,17 @@ The actual application is located in `apps/[bundleId]/[executable]`. All pages a
 
 ## Methods
 
-watchUI introduces a few new JavaScript methods to extend the functionality of Framework7. Right now, we've got Notifications, Update progress rings (not Activity Rings!) and Force Touch/Menus.
+watchUI introduces a few new JavaScript methods to extend the functionality of Framework7. Apart from the few basic methods coming from hte home screen, we've got Notifications, Update progress rings (not Activity Rings!) and Force Touch/Menus.
+
+### Home Screen/Apps
+
+You can open or close apps or press the home button programmatically. To do that, have a look at these methods:
+
+> ```myApp.openApp(el)``` - Open an app by specifiying an HTMLElement for ```el```. The HTMLElement is required to have a ```data-bundle``` attribute containing a valid application bundle id.
+
+> ```myApp.closeApp()``` - Close a currently open app.
+
+> ```myApp.home()``` - Emulate a press on the Digital Crown. Manages closing apps and moving the home screen back to the main app.
 
 ### Notifications
 
